@@ -88,7 +88,6 @@ public class MainClass {
         teamPoints.put("Wicked Maidens", calculateTeamPoints("Wicked Maidens",WM));
         teamPoints.put("Swashbuckling Sudarshans", calculateTeamPoints("Swashbuckling Sudarshans",SS));
         teamPoints.put("Mama's Asthana Loyalists", calculateTeamPoints("Mama's Asthana Loyalists",MAL));
-        teamPoints.put("Mama's Asthana Loyalists", calculateTeamPoints("Mama's Asthana Loyalists",MAL));
         teamPoints.put("ZZZTHATBALL", calculateTeamPoints("ZZZTHATBALL",ZTB));
         teamPoints.put("Yenna Da Anga Satham", calculateTeamPoints("Yenna Da Anga Satham",YDAS));
         teamPoints.put("The Usual Suspects", calculateTeamPoints("The Usual Suspects",TUS));
@@ -136,7 +135,7 @@ public class MainClass {
             /* do something */
             doc = Jsoup.parse(f, "utf-8", "http://www.espncricinfo.com/");
         } else {
-            doc = Jsoup.connect(link).timeout(10000).get();
+            doc = Jsoup.connect(link).timeout(20000).get();
             if (!link.contains("current")) {
                 cacheHTML(doc.html(), "cache" + matchCode);
             }
@@ -161,7 +160,7 @@ public class MainClass {
             int six = Integer.parseInt(batsman.child(numberOfChild - 2).html());
             String srate = batsman.child(numberOfChild - 1).html();
             float sr = 0;
-            if (!srate.equals("-"))
+            if (!srate.contains("-"))
                 sr = Float.parseFloat(srate);
             playerPoints.put(name, playerPoints.getOrDefault(name, 0) + calculateBattingPoints(runs, balls, fours, six, sr));
         }
