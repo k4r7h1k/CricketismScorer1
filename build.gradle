@@ -10,7 +10,6 @@ buildscript {
         classpath("org.hibernate:hibernate-core:4.3.8.Final")
     }
 }
-
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
@@ -62,7 +61,7 @@ eclipse {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.12'
+    gradleVersion = '2.0'
 }
 uploadArchives {
     repositories {
